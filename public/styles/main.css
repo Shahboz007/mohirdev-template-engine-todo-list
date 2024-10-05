@@ -1,0 +1,120 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/urbanist-v15-latin-300.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/urbanist-v15-latin-regular.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/urbanist-v15-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/urbanist-v15-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/urbanist-v15-latin-700.woff2") format("woff2");
+}
+
+:root {
+  --blue: #007fff;
+  --slate-purple: #3f3d56;
+  --white: #fff;
+  --pale-white: #f5f7f9;
+  --muted-azure: #c6cfdc;
+  --slate-blue: #8d9cb8;
+  --fire-red: #ff5e5e;
+  --red-shade: #ffb4ab;
+  --pale-white-50: rgba(198, 207, 220, 0.5);
+}
+
+:root {
+  --font-family: "Urbanist", sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 100px 120px;
+}
+
+.todo__item {
+  border-radius: 20px;
+  background: var(--pale-white);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.todo__item--label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  cursor: pointer;
+  z-index: 0;
+  text-decoration: none;
+}
+.todo__item--label::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.todo__item--body {
+}
+
+.todo__item--title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--slate-purple);
+  margin-bottom: 15px;
+}
+
+.todo__item--desc {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--slate-blue);
+}
+
+.todo__item__add {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.todo__item__add:hover .todo__item__add--title {
+  color: var(--slate-purple);
+}
+
+.todo__item__add--title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--slate-blue);
+}

@@ -1,9 +1,8 @@
 const tasksData = [];
 
 exports.getTasksPage = (req, res) => {
-  return res.render("layout", {
+  return res.render("index", {
     title: "Tasks",
-    body: '<%- include("index") %>',
   });
 };
 exports.getNewTaskPage = (req, res) => {};
