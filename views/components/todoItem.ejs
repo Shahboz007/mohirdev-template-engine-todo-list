@@ -2,11 +2,15 @@
   <label class="todo__item--label">
     <input type="checkbox" name="checkbox" />
     <div class="todo__item--body">
-      <h2 class="todo__item--title">Design sign up flow</h2>
+      <h2 class="todo__item--title"><%- title%></h2>
       <p class="todo__item--desc">
-        By the time a prospect arrives at your signup page, in most cases, they've already By
-        the time a prospect arrives at your signup page, in most cases.
+        <%-text%>
       </p>
+      <% if(status.toLowerCase()==='pending' ){%>
+        <p class="todo__item--pending"><%-status%></p>
+      <%} else {%>
+        <p class="todo__item--completed"><%-status%></p>
+      <%} %>
     </div>
   </label>
 </div>

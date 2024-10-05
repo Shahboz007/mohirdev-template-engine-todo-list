@@ -42,6 +42,7 @@
 
 :root {
   --blue: #007fff;
+  --success: #00aa36;
   --slate-purple: #3f3d56;
   --white: #fff;
   --pale-white: #f5f7f9;
@@ -101,6 +102,44 @@
   font-weight: 500;
   font-size: 16px;
   color: var(--slate-blue);
+  margin-bottom: 20px;
+}
+
+.todo__item--pending,
+.todo__item--completed {
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  z-index: 0;
+}
+
+.todo__item--pending::before,
+.todo__item--completed::before{
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  content: "";
+  z-index: 1;
+}
+
+
+.todo__item--pending {
+  color: var(--blue);
+}
+.todo__item--pending::before {
+  background-color: var(--blue);
+}
+
+.todo__item--completed {
+  color: var(--success);
+}
+.todo__item--completed::before {
+  background-color: var(--success);
 }
 
 .todo__item__add {
