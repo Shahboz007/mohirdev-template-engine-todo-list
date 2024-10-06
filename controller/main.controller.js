@@ -6,6 +6,8 @@ let tasksData = [];
     status: pending or completed
 */
 
+// Desc       Get all tasks page
+// Route      GET /
 exports.getTasksPage = (req, res) => {
   return res.render("index", {
     title: "Tasks",
@@ -13,11 +15,17 @@ exports.getTasksPage = (req, res) => {
     completedTasks: tasksData.filter((task) => task.status === "completed"),
   });
 };
+
+// Desc       Open a new task form
+// Route      GET /task/new
 exports.getNewTaskPage = (req, res) => {
   return res.render("todo-add", {
     title: "Add a new task",
   });
 };
+
+// Desc       Create a new task
+// Route      POSt /task
 exports.createNewTask = (req, res) => {
   const { title, desc } = req.body;
 
@@ -30,6 +38,9 @@ exports.createNewTask = (req, res) => {
 
   return res.redirect("/");
 };
+
+// Desc       Get updatable task
+// Route      GET /task/:id/edit
 exports.getEditTaskPage = (req, res) => {
   const { id } = req.params;
 
@@ -41,6 +52,9 @@ exports.getEditTaskPage = (req, res) => {
     initialValues,
   });
 };
+
+// Desc       Update task
+// Route      POST /task/:id/update
 exports.updateTask = (req, res) => {
   const { id } = req.params;
   const { title, desc } = req.body;
@@ -59,6 +73,9 @@ exports.updateTask = (req, res) => {
 
   return res.redirect("/");
 };
+
+// Desc       Delete task
+// Route      POST /task/:id/delete
 exports.deleteTask = (req, res) => {
   const { id } = req.params;
 
