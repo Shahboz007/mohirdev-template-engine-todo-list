@@ -42,6 +42,7 @@
 
 :root {
   --blue: #007fff;
+  --blue-dark: #006edd;
   --success: #00aa36;
   --slate-purple: #3f3d56;
   --white: #fff;
@@ -175,4 +176,64 @@
 
 .btn-icon:active {
   transform: scale(0.8);
+}
+
+/* Add todo */
+.form {
+  max-width: 340px;
+  margin: auto;
+}
+.form__control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.label {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+}
+.input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: 1px solid var(--slate-blue);
+  transition: outline-color 0.2s ease-in-out, outline-with 0.1s ease-in-out;
+}
+.input:focus {
+  outline-color: var(--blue);
+  outline-width: 2px;
+}
+
+.btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #ffff;
+  background-color: var(--blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-dark);
+}
+
+.section__title {
+  font-family: var(--font-family);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
 }
