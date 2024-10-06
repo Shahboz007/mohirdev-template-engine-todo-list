@@ -4,6 +4,9 @@
 
 <% pendingTasks.forEach(task => {%>
   <%- include('components/todoItem', {
-    title: task.title,text:task.desc, status: task.status}) -%>  
+    id: task.id,
+    title: task.title,text:task.desc, 
+    status: task.status
+    }) -%>  
 <%}) %>
 <%- include('footer') -%>
