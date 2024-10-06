@@ -1,12 +1,16 @@
 <%- include('header') -%>
 
-<%- include('components/todoItemAdd') -%>
+<% if(allTasks.length<1) {%>
+  <%- include('components/createNewTaskCard') -%>
+<% } else{%>
+  <%- include('components/todoItemAdd') -%>
 
-<% allTasks.forEach(task => {%>
-  <%- include('components/todoItem', {
-    id: task.id,
-    title: task.title,text:task.desc, 
-    status: task.status
-    }) -%>  
-<%}) %>
+  <% allTasks.forEach(task => {%>
+    <%- include('components/todoItem', {
+      id: task.id,
+      title: task.title,text:task.desc, 
+      status: task.status
+      }) -%>  
+  <%}) %>
+<%}%>
 <%- include('footer') -%>

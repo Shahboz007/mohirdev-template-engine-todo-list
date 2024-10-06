@@ -1,13 +1,6 @@
 const { validationResult } = require("express-validator");
 
-let tasksData = [
-  {
-    id: 1,
-    title: "asd",
-    desc: "asd",
-    status: "pending",
-  },
-];
+let tasksData = [];
 /* 
     id: number
     title: string
@@ -98,12 +91,12 @@ exports.getEditTaskPage = (req, res) => {
 // Route      POST /task/:id/update
 exports.updateTask = (req, res) => {
   const { id } = req.params;
-  
+
   const result = validationResult(req);
-  
+
   const { title, desc } = req.body;
 
-  if(!result.isEmpty()){
+  if (!result.isEmpty()) {
     return res.status(400).render("todo-edit", {
       title: "Task edit",
       id,
@@ -111,11 +104,11 @@ exports.updateTask = (req, res) => {
       errMsg: result.array()[0].msg,
       initialValues: {
         title,
-        desc
+        desc,
       },
     });
   }
-  
+
   tasksData = tasksData.map((task) => {
     if (task.id.toString() === id) {
       task.title = title;
