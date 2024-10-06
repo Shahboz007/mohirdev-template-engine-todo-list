@@ -7,6 +7,7 @@ const {
   getEditTaskPage,
   updateTask,
   deleteTask,
+  updateTaskStatus,
 } = require("../controller/main.controller");
 const router = Router();
 
@@ -15,6 +16,7 @@ router.get("/task/new", getNewTaskPage);
 router.post("/task", createNewTask);
 router.get("/task/:id/edit", getEditTaskPage);
 router.post("/task/:id/update", updateTask);
+router.get("/task/:id/update/status", updateTaskStatus);
 router.post("/task/:id/delete", deleteTask);
 
 module.exports = router;

@@ -1,4 +1,11 @@
-let tasksData = [];
+let tasksData = [
+  {
+    id: 1,
+    title: "asd",
+    desc: "asd",
+    status: "pending",
+  },
+];
 /* 
     id: number
     title: string
@@ -11,8 +18,7 @@ let tasksData = [];
 exports.getTasksPage = (req, res) => {
   return res.render("index", {
     title: "Tasks",
-    pendingTasks: tasksData.filter((task) => task.status === "pending"),
-    completedTasks: tasksData.filter((task) => task.status === "completed"),
+    allTasks: tasksData,
   });
 };
 
@@ -61,11 +67,24 @@ exports.updateTask = (req, res) => {
 
   tasksData = tasksData.map((task) => {
     if (task.id.toString() === id) {
-      task = {
-        ...task,
-        title,
-        desc,
-      };
+      task.title = title;
+      task.desc = desc;
+    }
+
+    return task;
+  });
+
+  return res.redirect("/");
+};
+
+// Desc       Update task status
+// Route      GET /task/:id/update/status
+exports.updateTaskStatus = (req, res) => {
+  const { id } = req.params;
+
+  tasksData = tasksData.map((task) => {
+    if (task.id.toString() === id) {
+      task.status = task.status === "pending" ? "completed" : "pending";
     }
 
     return task;

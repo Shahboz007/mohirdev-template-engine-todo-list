@@ -2,7 +2,7 @@
 
 <%- include('components/todoItemAdd') -%>
 
-<% pendingTasks.forEach(task => {%>
+<% allTasks.forEach(task => {%>
   <%- include('components/todoItem', {
     id: task.id,
     title: task.title,text:task.desc, 
