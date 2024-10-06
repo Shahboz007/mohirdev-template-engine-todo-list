@@ -1,4 +1,4 @@
-const tasksData = [];
+let tasksData = [];
 /* 
     id: number
     title: string
@@ -9,8 +9,8 @@ const tasksData = [];
 exports.getTasksPage = (req, res) => {
   return res.render("index", {
     title: "Tasks",
-    pendingTasks: tasksData.filter(task => task.status === 'pending'),
-    completedTasks: tasksData.filter(task => task.status === 'completed'),
+    pendingTasks: tasksData.filter((task) => task.status === "pending"),
+    completedTasks: tasksData.filter((task) => task.status === "completed"),
   });
 };
 exports.getNewTaskPage = (req, res) => {
@@ -30,6 +30,33 @@ exports.createNewTask = (req, res) => {
 
   return res.redirect("/");
 };
-exports.getEditTaskPage = (req, res) => {};
-exports.updateTask = (req, res) => {};
+exports.getEditTaskPage = (req, res) => {
+  const { id } = req.params;
+
+  const initialValues = tasksData.find((item) => item.id.toString() === id);
+
+  return res.render("todo-edit", {
+    title: "Task edit",
+    id,
+    initialValues,
+  });
+};
+exports.updateTask = (req, res) => {
+  const { id } = req.params;
+  const { title, desc } = req.body;
+
+  tasksData = tasksData.map((task) => {
+    if (task.id.toString() === id) {
+      task = {
+        ...task,
+        title,
+        desc,
+      };
+    }
+
+    return task;
+  });
+
+  return res.redirect("/");
+};
 exports.deleteTask = (req, res) => {};

@@ -1,0 +1,20 @@
+<%- include('header') -%>
+
+  <form class="form" method="POST" action="/task/<%-id%>/update">
+    <div class="form__control">
+      <%-include('components/sectionTitle', {title:"Create new task"})-%>
+    </div>
+    <div class="form__control">
+      <label class="label">Title</label>
+      <input class="input" type="text" name="title" placeholder="Enter title" autofocus value="<%-initialValues?.title%>" />
+    </div>
+    <div class="form__control">
+      <label class="label">Description</label>
+      <input class="input" type="text" name="desc" placeholder="Enter description"  value="<%-initialValues?.desc%>" />
+    </div>
+    <div class="form__control">
+      <button class="btn btn-primary">Update</button>
+    </div>
+  </form>
+
+  <%- include('footer') -%>
