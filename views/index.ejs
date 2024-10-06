@@ -2,12 +2,8 @@
 
 <%- include('components/todoItemAdd') -%>
 
-<%- include('components/todoItem', {
-  title: 'Design sign up flow',text:`By the time a prospect arrives at your signup page, in most cases, they've already By
-the time a prospect arrives at your signup page, in most cases.`, status: "pending"}) -%>
-
-<%- include('components/todoItem', {
-  title: 'Design sign up flow',text:`By the time a prospect arrives at your signup page, in most cases, they've already By
-the time a prospect arrives at your signup page, in most cases.`, status: "completed"}) -%>
-
+<% pendingTasks.forEach(task => {%>
+  <%- include('components/todoItem', {
+    title: task.title,text:task.desc, status: task.status}) -%>  
+<%}) %>
 <%- include('footer') -%>

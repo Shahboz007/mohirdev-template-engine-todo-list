@@ -80,6 +80,7 @@
 }
 
 .todo__item--body {
+  flex: 1;
 }
 
 .todo__item--title {
@@ -88,6 +89,11 @@
   font-size: 18px;
   color: var(--slate-purple);
   margin-bottom: 15px;
+}
+
+.todo__item input:checked + div .todo__item--title {
+  color: var(--slate-blue);
+  text-decoration: line-through;
 }
 
 .todo__item--desc {
