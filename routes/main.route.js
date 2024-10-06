@@ -15,6 +15,6 @@ router.get("/task/new", getNewTaskPage);
 router.post("/task", createNewTask);
 router.get("/task/:id/edit", getEditTaskPage);
 router.post("/task/:id/update", updateTask);
-router.delete("/task/:id/delete", deleteTask);
+router.post("/task/:id/delete", deleteTask);
 
 module.exports = router;

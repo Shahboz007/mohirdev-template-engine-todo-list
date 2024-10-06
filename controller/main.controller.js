@@ -59,4 +59,10 @@ exports.updateTask = (req, res) => {
 
   return res.redirect("/");
 };
-exports.deleteTask = (req, res) => {};
+exports.deleteTask = (req, res) => {
+  const { id } = req.params;
+
+  tasksData = tasksData.filter((task) => task.id.toString() !== id);
+
+  return res.redirect("/");
+};
