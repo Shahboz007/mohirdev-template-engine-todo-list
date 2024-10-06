@@ -244,3 +244,38 @@
   letter-spacing: 0.5px;
   margin-bottom: 20px;
 }
+
+/* ALERT */
+.alert {
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.09);
+
+  font-family: var(--font-family);
+  /* font-size: 28px; */
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+}
+
+.success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.alert strong {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.alert:hover {
+  opacity: 0.9;
+}

@@ -1,16 +1,24 @@
 <%- include('header') -%>
 
   <form class="form" method="POST" action="/task">
+    <% if(errMsg !==''){ %>
+      <div class="form__control">
+        <div class="alert error">
+          <strong>Error!</strong> <%-errMsg%>.
+        </div>
+      </div>
+    <% } %>
+
     <div class="form__control">
       <%-include('components/sectionTitle', {title:"Create new task"})-%>
     </div>
     <div class="form__control">
       <label class="label">Title</label>
-      <input class="input" type="text" name="title" placeholder="Enter title" autofocus />
+      <input class="input" type="text" name="title" placeholder="Enter title" autofocus value="<%-initialValues.title%>" />
     </div>
     <div class="form__control">
       <label class="label">Description</label>
-      <input class="input" type="text" name="desc" placeholder="Enter description" />
+      <input class="input" type="text" name="desc" placeholder="Enter description" value="<%-initialValues.desc%>" />
     </div>
     <div class="form__control">
       <button class="btn btn-primary">Create</button>

@@ -1,3 +1,5 @@
+const { validationResult } = require("express-validator");
+
 let tasksData = [
   {
     id: 1,
@@ -27,13 +29,31 @@ exports.getTasksPage = (req, res) => {
 exports.getNewTaskPage = (req, res) => {
   return res.render("todo-add", {
     title: "Add a new task",
+    errMsg: "",
+    initialValues: {
+      title: "",
+      desc: "",
+    },
   });
 };
 
 // Desc       Create a new task
 // Route      POSt /task
 exports.createNewTask = (req, res) => {
+  const result = validationResult(req);
+
   const { title, desc } = req.body;
+
+  if (!result.isEmpty()) {
+    return res.status(400).render("todo-add", {
+      title: "Add a new task",
+      errMsg: result.array()[0].msg,
+      initialValues: {
+        title,
+        desc,
+      },
+    });
+  }
 
   tasksData.push({
     id: tasksData.length > 0 ? tasksData[tasksData.length - 1] + 1 : 1,
