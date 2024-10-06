@@ -70,12 +70,27 @@ exports.createNewTask = (req, res) => {
 exports.getEditTaskPage = (req, res) => {
   const { id } = req.params;
 
-  const initialValues = tasksData.find((item) => item.id.toString() === id);
+  const findTask = tasksData.find((item) => item.id.toString() === id);
+
+  if (!findTask) {
+    return res.status(404).render("todo-edit", {
+      title: "Task edit",
+      errMsg: "Task not found",
+      isNotFound: true,
+      id,
+      initialValues: {
+        title: "",
+        desc: "",
+      },
+    });
+  }
 
   return res.render("todo-edit", {
     title: "Task edit",
     id,
-    initialValues,
+    isNotFound: false,
+    errMsg: "",
+    initialValues: findTask,
   });
 };
 
@@ -83,8 +98,24 @@ exports.getEditTaskPage = (req, res) => {
 // Route      POST /task/:id/update
 exports.updateTask = (req, res) => {
   const { id } = req.params;
+  
+  const result = validationResult(req);
+  
   const { title, desc } = req.body;
 
+  if(!result.isEmpty()){
+    return res.status(400).render("todo-edit", {
+      title: "Task edit",
+      id,
+      isNotFound: false,
+      errMsg: result.array()[0].msg,
+      initialValues: {
+        title,
+        desc
+      },
+    });
+  }
+  
   tasksData = tasksData.map((task) => {
     if (task.id.toString() === id) {
       task.title = title;

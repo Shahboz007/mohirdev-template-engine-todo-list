@@ -223,6 +223,7 @@
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
+  text-decoration: none;
 
   cursor: pointer;
 }
